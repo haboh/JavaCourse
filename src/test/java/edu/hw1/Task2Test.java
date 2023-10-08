@@ -9,9 +9,10 @@ public class Task2Test {
     @DisplayName("Sample 1")
     void sample1() {
         // given
+        String time = "01:00";
 
         // when
-        int seconds = Task2.minutesToSeconds("01:00");
+        int seconds = Task2.minutesToSeconds(time);
 
         // then
         assertThat(seconds).isEqualTo(60);
@@ -19,11 +20,12 @@ public class Task2Test {
 
     @Test
     @DisplayName("Sample 2")
-    void sample3() {
+    void sample2() {
         // given
+        String time = "13:56";
 
         // when
-        int seconds = Task2.minutesToSeconds("13:56");
+        int seconds = Task2.minutesToSeconds(time);
 
         // then
         assertThat(seconds).isEqualTo(836);
@@ -31,11 +33,12 @@ public class Task2Test {
 
     @Test
     @DisplayName("Sample 3")
-    void sample2() {
+    void sample3() {
         // given
+        String time = "10:60";
 
         // when
-        int seconds = Task2.minutesToSeconds("10:60");
+        int seconds = Task2.minutesToSeconds(time);
 
         // then
         assertThat(seconds).isEqualTo(-1);
@@ -45,9 +48,10 @@ public class Task2Test {
     @DisplayName("Big seconds")
     void tooBigSeconds() {
         // given
+        String time = "10:400";
 
         // when
-        int seconds = Task2.minutesToSeconds("10:400");
+        int seconds = Task2.minutesToSeconds(time);
 
         // then
         assertThat(seconds).isEqualTo(-1);
@@ -57,9 +61,10 @@ public class Task2Test {
     @DisplayName("Big minutes")
     void tooBigMinutes() {
         // given
+        String time = "100:35";
 
         // when
-        int seconds = Task2.minutesToSeconds("100:35");
+        int seconds = Task2.minutesToSeconds(time);
 
         // then
         assertThat(seconds).isEqualTo(6035);
@@ -69,9 +74,10 @@ public class Task2Test {
     @DisplayName("Not enough symbols in seconds")
     void fewSeconds() {
         // given
+        String time = "100:3";
 
         // when
-        int seconds = Task2.minutesToSeconds("100:3");
+        int seconds = Task2.minutesToSeconds(time);
 
         // then
         assertThat(seconds).isEqualTo(-1);

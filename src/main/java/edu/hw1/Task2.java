@@ -1,7 +1,7 @@
 package edu.hw1;
 
 public class Task2 {
-    public static final int SECONDS_IN_MINUTE = 60;
+    private static final int SECONDS_IN_MINUTE = 60;
 
     private Task2() {
     }
