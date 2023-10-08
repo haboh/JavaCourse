@@ -1,7 +1,5 @@
 package edu.hw1;
 
-import java.util.Arrays;
-
 public class Task3 {
     private Task3() {
     }
@@ -13,16 +11,18 @@ public class Task3 {
         if (a2.length == 0) {
             return true; // nothing can be put inside empty array
         }
-        int a1_min = a1[0], a1_max = a1[0];
-        int a2_min = a2[0], a2_max = a2[0];
+        int a1Min = a1[0];
+        int a1Max = a1[0];
+        int a2Min = a2[0];
+        int a2Max = a2[0];
         for (int j : a1) {
-            a1_min = Math.min(a1_min, j);
-            a1_max = Math.max(a1_max, j);
+            a1Min = Math.min(a1Min, j);
+            a1Max = Math.max(a1Max, j);
         }
         for (int j : a2) {
-            a2_min = Math.min(a2_min, j);
-            a2_max = Math.max(a2_max, j);
+            a2Min = Math.min(a2Min, j);
+            a2Max = Math.max(a2Max, j);
         }
-        return a2_min < a1_min && a1_max < a2_max;
+        return a2Min < a1Min && a1Max < a2Max;
     }
 }
