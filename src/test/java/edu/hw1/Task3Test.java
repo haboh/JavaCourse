@@ -9,77 +9,83 @@ public class Task3Test {
     @DisplayName("Sample 1")
     void sample1() {
         // given
-        int number = 4666;
+        int[] a1 = {1, 2, 3, 4};
+        int[] a2 = {0, 6};
 
         // when
-        int seconds = Task3.countDigits(number);
+        boolean can_put = Task3.countDigits(a1, a2);
 
         // then
-        assertThat(seconds).isEqualTo(4);
+        assertThat(can_put).isTrue();
     }
 
     @Test
     @DisplayName("Sample 2")
     void sample2() {
         // given
-        int number = 544;
+        int[] a1 = {3, 1};
+        int[] a2 = {4, 0};
 
         // when
-        int seconds = Task3.countDigits(number);
+        boolean can_put = Task3.countDigits(a1, a2);
 
         // then
-        assertThat(seconds).isEqualTo(3);
+        assertThat(can_put).isTrue();
     }
 
     @Test
     @DisplayName("Sample 3")
     void sample3() {
         // given
-        int number = 0;
+        int[] a1 = {9, 9, 8};
+        int[] a2 = {8, 9};
 
         // when
-        int seconds = Task3.countDigits(number);
+        boolean can_put = Task3.countDigits(a1, a2);
 
         // then
-        assertThat(seconds).isEqualTo(1);
+        assertThat(can_put).isFalse();
     }
 
     @Test
-    @DisplayName("Negative number")
-    void negativeNumber() {
+    @DisplayName("Sample 4")
+    void sample4() {
         // given
-        int number = -100;
+        int[] a1 = {1, 2, 3, 4};
+        int[] a2 = {2, 3};
 
         // when
-        int seconds = Task3.countDigits(number);
+        boolean can_put = Task3.countDigits(a1, a2);
 
         // then
-        assertThat(seconds).isEqualTo(3);
+        assertThat(can_put).isFalse();
     }
 
     @Test
-    @DisplayName("Big positive number")
-    void bigPositive() {
+    @DisplayName("Empty first")
+    void emptyFirst() {
         // given
-        int number = Integer.MAX_VALUE;
+        int[] a1 = {};
+        int[] a2 = {2, 3};
 
         // when
-        int seconds = Task3.countDigits(number);
+        boolean can_put = Task3.countDigits(a1, a2);
 
         // then
-        assertThat(seconds).isEqualTo(10);
+        assertThat(can_put).isFalse();
     }
 
     @Test
-    @DisplayName("Big negative number")
-    void bigNegative() {
+    @DisplayName("Empty second")
+    void emptySecond() {
         // given
-        int number = Integer.MIN_VALUE;
+        int[] a1 = {1, 2, 3, 4};
+        int[] a2 = {};
 
         // when
-        int seconds = Task3.countDigits(number);
+        boolean can_put = Task3.countDigits(a1, a2);
 
         // then
-        assertThat(seconds).isEqualTo(10);
+        assertThat(can_put).isTrue();
     }
 }

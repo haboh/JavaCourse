@@ -9,77 +9,77 @@ public class Task2Test {
     @DisplayName("Sample 1")
     void sample1() {
         // given
-        String time = "01:00";
+        int number = 4666;
 
         // when
-        int seconds = Task2.minutesToSeconds(time);
+        int seconds = Task2.countDigits(number);
 
         // then
-        assertThat(seconds).isEqualTo(60);
+        assertThat(seconds).isEqualTo(4);
     }
 
     @Test
     @DisplayName("Sample 2")
     void sample2() {
         // given
-        String time = "13:56";
+        int number = 544;
 
         // when
-        int seconds = Task2.minutesToSeconds(time);
+        int seconds = Task2.countDigits(number);
 
         // then
-        assertThat(seconds).isEqualTo(836);
+        assertThat(seconds).isEqualTo(3);
     }
 
     @Test
     @DisplayName("Sample 3")
     void sample3() {
         // given
-        String time = "10:60";
+        int number = 0;
 
         // when
-        int seconds = Task2.minutesToSeconds(time);
+        int seconds = Task2.countDigits(number);
 
         // then
-        assertThat(seconds).isEqualTo(-1);
+        assertThat(seconds).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("Big seconds")
-    void tooBigSeconds() {
+    @DisplayName("Negative number")
+    void negativeNumber() {
         // given
-        String time = "10:400";
+        int number = -100;
 
         // when
-        int seconds = Task2.minutesToSeconds(time);
+        int seconds = Task2.countDigits(number);
 
         // then
-        assertThat(seconds).isEqualTo(-1);
+        assertThat(seconds).isEqualTo(3);
     }
 
     @Test
-    @DisplayName("Big minutes")
-    void tooBigMinutes() {
+    @DisplayName("Big positive number")
+    void bigPositive() {
         // given
-        String time = "100:35";
+        int number = Integer.MAX_VALUE;
 
         // when
-        int seconds = Task2.minutesToSeconds(time);
+        int seconds = Task2.countDigits(number);
 
         // then
-        assertThat(seconds).isEqualTo(6035);
+        assertThat(seconds).isEqualTo(10);
     }
 
     @Test
-    @DisplayName("Not enough symbols in seconds")
-    void fewSeconds() {
+    @DisplayName("Big negative number")
+    void bigNegative() {
         // given
-        String time = "100:3";
+        int number = Integer.MIN_VALUE;
 
         // when
-        int seconds = Task2.minutesToSeconds(time);
+        int seconds = Task2.countDigits(number);
 
         // then
-        assertThat(seconds).isEqualTo(-1);
+        assertThat(seconds).isEqualTo(10);
     }
 }
