@@ -14,17 +14,13 @@ public class Task6 {
         if (number <= MIN_BOUND || number >= MAX_BOUND) {
             return -1;
         }
-
-        int count = 0;
-        int currentNumber = number;
-        while (currentNumber != KAPREKARA_NUMBER) {
-            char[] num = Integer.toString(currentNumber).toCharArray();
-            Arrays.sort(num);
-            String ascending = new String(num);
-            String descending = new StringBuilder().append(num).reverse().toString();
-            currentNumber = Integer.parseInt(descending) - Integer.parseInt(ascending);
-            count++;
+        if (number == KAPREKARA_NUMBER) {
+            return 0;
         }
-        return count;
+        char[] num = Integer.toString(number).toCharArray();
+        Arrays.sort(num);
+        String ascending = new String(num);
+        String descending = new StringBuilder().append(num).reverse().toString();
+        return countK(Integer.parseInt(descending) - Integer.parseInt(ascending)) + 1;
     }
 }
