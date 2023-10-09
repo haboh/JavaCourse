@@ -14,7 +14,7 @@ public class Task5 {
         while (num.length() > 1 && num.length() % 2 == 0 && !isPalindrome(num)) {
             StringBuilder compressedNumber = new StringBuilder();
             for (int i = 0; i < num.length(); i += 2) {
-                compressedNumber.append((char)(num.charAt(i) - '0' + num.charAt(i + 1)));
+                compressedNumber.append((char) (num.charAt(i) - '0' + num.charAt(i + 1)));
             }
             num = compressedNumber.toString();
         }
