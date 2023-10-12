@@ -86,7 +86,7 @@ public class Task3Test {
         boolean can_put = Task3.countDigits(a1, a2);
 
         // then
-        assertThat(can_put).isTrue();
+        assertThat(can_put).isFalse();
     }
 
     @Test
