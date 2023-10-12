@@ -1,15 +1,12 @@
 package edu.hw1;
 
 public class Task3 {
-    private Task3() {
-    }
-
     public static boolean countDigits(int[] a1, int[] a2) {
-        if (a1.length == 0) {
-            return false; // empty array can be put anywhere
+        if (a1 == null || a2 == null) {
+            return false;
         }
-        if (a2.length == 0) {
-            return true; // nothing can be put inside empty array
+        if (a1.length == 0 || a2.length == 0) {
+            return false;
         }
         int a1Min = a1[0];
         int a1Max = a1[0];
@@ -24,5 +21,8 @@ public class Task3 {
             a2Max = Math.max(a2Max, j);
         }
         return a2Min < a1Min && a1Max < a2Max;
+    }
+
+    private Task3() {
     }
 }

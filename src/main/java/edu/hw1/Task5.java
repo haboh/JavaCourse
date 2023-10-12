@@ -1,14 +1,6 @@
 package edu.hw1;
 
 public class Task5 {
-    private Task5() {
-    }
-
-    private static boolean isPalindrome(String number) {
-        String reversedNumber = new StringBuilder().append(number).reverse().toString();
-        return number.equals(reversedNumber);
-    }
-
     public static boolean isPalindromeDescendant(int number) {
         String num = Integer.toString(number);
         while (num.length() > 1 && num.length() % 2 == 0 && !isPalindrome(num)) {
@@ -20,5 +12,13 @@ public class Task5 {
         }
 
         return isPalindrome(num);
+    }
+
+    private Task5() {
+    }
+
+    private static boolean isPalindrome(String number) {
+        String reversedNumber = new StringBuilder().append(number).reverse().toString();
+        return number.equals(reversedNumber);
     }
 }

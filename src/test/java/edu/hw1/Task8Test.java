@@ -70,4 +70,17 @@ public class Task8Test {
         // then
         assertThat(result).isFalse();
     }
+
+    @Test
+    @DisplayName("Test null")
+    void testNull() {
+        // given
+        int[][] field = null;
+
+        // when
+        boolean result = Task8.knightBoardCapture(field);
+
+        // then
+        assertThat(result).isFalse();
+    }
 }

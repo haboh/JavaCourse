@@ -1,59 +1,25 @@
 package edu.hw1;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task4Test {
-    @Test
-    @DisplayName("Sample 1")
-    void sample1() {
-        // given
-        String s = "123456";
-
-        // when
-        String fixedString = Task4.fixString(s);
-
-        // then
-        assertThat(fixedString).isEqualTo("214365");
+    @ParameterizedTest(name = "{index}: {0} maps to {1}")
+    @CsvSource({
+        "123456, 214365",
+        "hTsii  s aimex dpus rtni.g, This is a mixed up string.",
+        "badce, abcde"})
+    void test(String given, String expected) {
+        assertThat(Task4.fixString(given)).isEqualTo(expected);
     }
 
-    @Test
-    @DisplayName("Sample 2")
-    void sample2() {
-        // given
-        String s = "hTsii  s aimex dpus rtni.g";
-
-        // when
-        String fixedString = Task4.fixString(s);
-
-        // then
-        assertThat(fixedString).isEqualTo("This is a mixed up string.");
-    }
-
-    @Test
-    @DisplayName("Sample 3")
-    void sample3() {
-        // given
-        String s = "badce";
-
-        // when
-        String fixedString = Task4.fixString(s);
-
-        // then
-        assertThat(fixedString).isEqualTo("abcde");
-    }
-
-    @Test
-    @DisplayName("Empty string")
-    void emptyString() {
-        // given
-        String s = "";
-
-        // when
-        String fixedString = Task4.fixString(s);
-
-        // then
-        assertThat(fixedString).isEqualTo("");
+    @ParameterizedTest
+    @DisplayName("Empty and null string")
+    @NullAndEmptySource
+    void emptyAndNullString(String s) {
+        assertThat(Task4.fixString(s)).isEqualTo(s);
     }
 }

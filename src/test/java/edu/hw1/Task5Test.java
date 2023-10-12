@@ -2,84 +2,22 @@ package edu.hw1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class Task5Test {
-    @Test
-    @DisplayName("Sample 1")
-    void sample1() {
-        // given
-        int number = 11211230;
-
-        // when
-        boolean isPalindrome = Task5.isPalindromeDescendant(number);
-
-        // then
-        assertThat(isPalindrome).isTrue();
+    @ParameterizedTest(name = "{index}: {0} is palindrome descendant")
+    @DisplayName("Positive tests")
+    @ValueSource(ints = { 11211230, 13001120, 23336014, 11, 0 })
+    void positive(int number) {
+        assertThat(Task5.isPalindromeDescendant(number)).isTrue();
     }
 
-    @Test
-    @DisplayName("Sample 2")
-    void sample2() {
-        // given
-        int number = 13001120;
-
-        // when
-        boolean isPalindrome = Task5.isPalindromeDescendant(number);
-
-        // then
-        assertThat(isPalindrome).isTrue();
-    }
-
-    @Test
-    @DisplayName("Sample 3")
-    void sample3() {
-        // given
-        int number = 23336014;
-
-        // when
-        boolean isPalindrome = Task5.isPalindromeDescendant(number);
-
-        // then
-        assertThat(isPalindrome).isTrue();
-    }
-
-    @Test
-    @DisplayName("Sample 4")
-    void sample4() {
-        // given
-        int number = 11;
-
-        // when
-        boolean isPalindrome = Task5.isPalindromeDescendant(number);
-
-        // then
-        assertThat(isPalindrome).isTrue();
-    }
-
-    @Test
-    @DisplayName("Zero")
-    void zero() {
-        // given
-        int number = 0;
-
-        // when
-        boolean isPalindrome = Task5.isPalindromeDescendant(number);
-
-        // then
-        assertThat(isPalindrome).isTrue();
-    }
-
-    @Test
-    @DisplayName("Negative answer")
-    void negative() {
-        // given
-        int number = 548312245;
-
-        // when
-        boolean isPalindrome = Task5.isPalindromeDescendant(number);
-
-        // then
-        assertThat(isPalindrome).isFalse();
+    @ParameterizedTest(name = "{index}: {0} is not palindrome descendant")
+    @DisplayName("Negative tests")
+    @ValueSource(ints = { 548312245 })
+    void negative(int number) {
+        assertThat(Task5.isPalindromeDescendant(number)).isFalse();
     }
 }

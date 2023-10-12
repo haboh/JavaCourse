@@ -88,4 +88,16 @@ public class Task3Test {
         // then
         assertThat(can_put).isTrue();
     }
+
+    @Test
+    @DisplayName("Nulls")
+    void nulls() {
+        // given
+        int[] a = {1, 2, 3, 4};
+
+        // then
+        assertThat(Task3.countDigits(null, a)).isFalse();
+        assertThat(Task3.countDigits(a, null)).isFalse();
+        assertThat(Task3.countDigits(null, null)).isFalse();
+    }
 }
