@@ -18,8 +18,7 @@ public final class PopularCommandExecutor {
             for (int i = 0; i < maxAttempts; i++) {
                 connection.execute(command);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new ConnectionException("", e);
         }
     }
