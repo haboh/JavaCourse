@@ -11,9 +11,13 @@ public class Task2Test {
         Rectangle rectangle = new Rectangle(2, 3);
         assertThat(rectangle.area()).isEqualTo(6);
 
-        Rectangle modifiedRectangle = rectangle.setWidth(4);
+        Rectangle modifiedWidthRectangle = rectangle.setWidth(4);
         assertThat(rectangle.area()).isEqualTo(6);
-        assertThat(modifiedRectangle.area()).isEqualTo(12);
+        assertThat(modifiedWidthRectangle.area()).isEqualTo(12);
+
+        Rectangle modifiedHeightRectangle = rectangle.setHeight(4);
+        assertThat(rectangle.area()).isEqualTo(6);
+        assertThat(modifiedHeightRectangle.area()).isEqualTo(8);
     }
 
     @Test
