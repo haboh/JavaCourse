@@ -70,8 +70,9 @@ public class Task3Test {
         PopularCommandExecutor executor = new PopularCommandExecutor(faultyManager, 1);
 
         assertThrows(ConnectionException.class, () -> {
-            executor.tryExecute("none");
-            executor.tryExecute("none");
+            for (int i = 0; i < 5; i++) {
+                executor.tryExecute("none");
+            }
         });
     }
 
