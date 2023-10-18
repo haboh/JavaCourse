@@ -9,17 +9,16 @@ public final class PopularCommandExecutor {
         maxAttempts = maxAttempts0;
     }
 
-    public void updatePackages() {
-        tryExecute("apt update && apt upgrade -y");
-    }
-
     void tryExecute(String command) throws ConnectionException {
-        try (Connection connection = manager.getConnection()) {
-            for (int i = 0; i < maxAttempts; i++) {
+        Exception lastException = null;
+        for (int i = 0; i < maxAttempts; i++) {
+            try (Connection connection = manager.getConnection()) {
                 connection.execute(command);
+                return;
+            } catch (Exception exception) {
+                lastException = exception;
             }
-        } catch (Exception e) {
-            throw new ConnectionException("", e);
         }
+        throw new ConnectionException("", lastException);
     }
 }
